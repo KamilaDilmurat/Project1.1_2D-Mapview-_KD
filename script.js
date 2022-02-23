@@ -11,12 +11,12 @@ require([
           map: map,
           container: "viewDiv",
           zoom: 5,
-          center: [-104.99, 39.74]
+          center: [87.5, 43.8]
         });
 
         var layer = Layer.fromPortalItem({
           portalItem: {
-            id: "99fd67933e754a1181cc755146be21ca"
+            id: "2cdad2d703344d1fa2681bb5fb9fe221"
           }
         })
           .then(addLayer)
@@ -24,7 +24,7 @@ require([
   
   var layer = Layer.fromPortalItem({
           portalItem: {
-            id: "ea534c7d48894b269722f410bc5f45ad"
+            id: "ec224b6e776c44ff8169d1f0fa27e5f2"
           }
         })
           .then(addLayer)
