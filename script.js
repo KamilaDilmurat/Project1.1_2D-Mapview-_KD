@@ -1,16 +1,19 @@
-require([
+
+
+     require([
         "esri/Map",
         "esri/views/MapView",
         "esri/layers/Layer"
       ], function (Map, MapView, Layer) {
-        var map = new Map({
-          basemap: "topo-vector"
+        const map = new Map({
+          basemap: "topo-vector",
+          ground: "world-elevation" 
         });
 
-        var view = new MapView({
+       var view = new MapView({
           map: map,
           container: "viewDiv",
-          zoom: 5,
+         scale: 500000,
           center: [87.5, 43.8]
         });
 
@@ -37,4 +40,62 @@ require([
         function rejection(error) {
           console.log("Layer failed to load: ", error);
         }
-      })
+      });
+  
+var camera = new Camera({
+        position: [
+          -90.1994, // lon
+          38, // lat
+          10000000// elevation in meters
+        ],
+        tilt:0,
+        heading: 0
+      });
+
+
+var homeBtn = new Home({
+        view: view
+      });
+
+      // Add the home button to the top left corner of the view
+    view.ui.add(homeBtn, "top-left");
+    
+    [ber, bei,stl].forEach(function(button) {
+      button.style.display = '.esri-button';
+      view.ui.add(button, 'bottom-right');
+    });
+    
+
+ber.addEventListener('click', function() {
+      // reuse the default camera position already established in the homeBtn
+      view.goTo({
+        position: {
+          x: 13.36,
+          y: 52.56,
+          z: 5000000
+        },
+        tilt: 0,
+        heading: 0
+      });
+    });
+
+    bei.addEventListener('click', function() {
+      // reuse the default camera position already established in the homeBtn
+      view.goTo({
+        position: {
+          x: 116.4074,
+          y: 39.9042,
+          z: 5000000
+        },
+        tilt: 0,
+        heading: 0
+      });
+    });
+      
+      
+   stl.addEventListener('click', function() {
+      // reuse the default camera position already established in the homeBtn
+      view.goTo({
+        target:camera
+      });
+    });
